@@ -11,11 +11,15 @@ public class Library {
     private String openDays;
     private String openStatement;
 
-    public Library(String name)
-    {
-        this.name=name;
-
+    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement) {
+        this.address = address;
+        this.id = id;
+        this.name = name;
+        this.open = open;
+        this.openDays = openDays;
+        this.openStatement = openStatement;
     }
+
 
     public String getAddress() {
         return address;

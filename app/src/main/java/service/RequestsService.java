@@ -7,9 +7,6 @@ import pt.caf_pbs.schooldiskclient.dto.*;
 import handler.JsonHandler;
 import handler.NetworkHandler;
 import helper.Utils;
-import model.Book;
-import model.Library;
-import model.Review;
 
 import java.util.List;
 

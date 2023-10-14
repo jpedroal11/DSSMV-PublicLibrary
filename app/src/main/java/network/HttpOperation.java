@@ -29,8 +29,6 @@ public class HttpOperation {
 
 
 
-
-
     public static String get(String urlStr) {
         String body = null;
         InputStream in = null;
@@ -40,7 +38,7 @@ public class HttpOperation {
             URL url = new URL(urlStr);
             URLConnection urlConn = url.openConnection();
             if (!(urlConn instanceof HttpURLConnection)) {
-                throw new IOException("URL is not an Http URL");
+                throw new IOException("URL  is not an Http URL");
             }
             httpConn = (HttpURLConnection) urlConn;
             httpConn.setRequestMethod("GET");

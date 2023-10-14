@@ -12,12 +12,15 @@ public class Book {
     private String numberOfPages;
     private String publishDate;
 
-    public Book(String title)
-    {
-        this.title=title;
-
+    public Book(String title, String author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.description = description;
+        this.icon = icon;
+        this.numberOfPages = numberOfPages;
+        this.publishDate = publishDate;
     }
-
 
     public String getTitle() {
         return title;
