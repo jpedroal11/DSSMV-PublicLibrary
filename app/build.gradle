@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.dssmv_1211066_1210939'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.dssmv_1211066_1210939"
-        minSdk 34
-        targetSdk 34
+        minSdk 33
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

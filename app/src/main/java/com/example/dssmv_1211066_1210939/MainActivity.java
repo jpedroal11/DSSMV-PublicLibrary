@@ -17,13 +17,12 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openMenuActivity();
+            public void onClick(View v) { openmenuactivity();
             }
         });
     }
 
-    public void openMenuActivity() {
+    public void openmenuactivity() {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
