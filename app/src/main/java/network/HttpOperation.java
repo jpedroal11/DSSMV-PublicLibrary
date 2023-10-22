@@ -27,15 +27,15 @@ public class HttpOperation {
         return sb.toString();
     }
 
-
-
     public static String get(String urlStr) {
-        String body = null;
+        String libraryData = null;
         InputStream in = null;
         HttpURLConnection httpConn = null;
         int resCode = -1;
         try {
-            URL url = new URL(urlStr);
+            String apiUrl = "http://193.136.62.24/v2/api-docs";
+            String endpoint = "/v1/library";
+            URL url = new URL(apiUrl + endpoint);
             URLConnection urlConn = url.openConnection();
             if (!(urlConn instanceof HttpURLConnection)) {
                 throw new IOException("URL  is not an Http URL");
@@ -56,6 +56,38 @@ public class HttpOperation {
             if (httpConn != null)
                 httpConn.disconnect();
         }
-        return body;
+        return libraryData;
+    }
+
+    public static String get(String urlStr) {
+        String libraryBookData = null;
+        InputStream in = null;
+        HttpURLConnection httpConn = null;
+        int resCode = -1;
+        try {
+            String apiUrl = "http://193.136.62.24/v2/api-docs";
+            String endpoint = "/v1/library/{libraryId}/book";
+            URL url = new URL(apiUrl + endpoint);
+            URLConnection urlConn = url.openConnection();
+            if (!(urlConn instanceof HttpURLConnection)) {
+                throw new IOException("URL  is not an Http URL");
+            }
+            httpConn = (HttpURLConnection) urlConn;
+            httpConn.setRequestMethod("GET");
+            httpConn.connect();
+            resCode = httpConn.getResponseCode();
+            if (resCode == HttpURLConnection.HTTP_OK) {
+                in = httpConn.getInputStream();
+                body = readBody(in);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (httpConn != null)
+                httpConn.disconnect();
+        }
+        return libraryBookData;
     }
 }
