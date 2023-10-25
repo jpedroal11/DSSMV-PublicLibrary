@@ -2,6 +2,8 @@ package model;
 
 import android.graphics.Bitmap;
 
+import java.util.List;
+
 public class Library {
 
     private String address;
@@ -10,19 +12,26 @@ public class Library {
     private Boolean open;
     private String openDays;
     private String openStatement;
+    private List books;
 
-    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement) {
-        this.address = address;
-        this.id = id;
-        this.name = name;
-        this.open = open;
-        this.openDays = openDays;
-        this.openStatement = openStatement;
+
+
+    public Library(String Name, List<Book> books) {
+        this.name= name;
+        this.books = books;
     }
 
 
     public String getAddress() {
         return address;
+    }
+
+    public List getBooks() {
+        return books;
+    }
+
+    public void setBooks(List books) {
+        this.books = books;
     }
 
     public void setAddress(String address) {

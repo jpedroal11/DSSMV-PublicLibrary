@@ -8,16 +8,24 @@ public class Book {
     private String author;
     private String isbn;
     private String description;
-    private Bitmap icon;
+    private Bitmap Icon;
     private String numberOfPages;
     private String publishDate;
+
+    private String Riview;
+
+    private String Name;
+
+    public Book() {
+
+    }
 
     public Book(String title, String author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.description = description;
-        this.icon = icon;
+        this.Icon = icon;
         this.numberOfPages = numberOfPages;
         this.publishDate = publishDate;
     }
@@ -54,13 +62,7 @@ public class Book {
         this.description = description;
     }
 
-    public Bitmap getIcon() {
-        return icon;
-    }
 
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
-    }
 
     public String getNumberOfPages() {
         return numberOfPages;
@@ -77,4 +79,25 @@ public class Book {
     public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = Name;
+    }
+
+    public void setIcon(Bitmap Icon) {
+        Icon = Icon;
+    }
+
+    public String getRiview() {
+        return Riview;
+    }
+
+    public void setRiview(String riview) {
+        Riview = riview;
+    }
 }
+

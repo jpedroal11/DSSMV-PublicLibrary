@@ -1,12 +1,11 @@
 package helper;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-
-
-
+/**
+ * Created by paulo on 09-06-2017.
+ */
 public class Utils {
-
+    public static final String ID = "INITIALS";
     /*public static final String ID = "INITIALS";
     public static final String NAME = "NAME";
     public static final int REQUEST_CODE_EDIT_ACTIVITY = 1;
@@ -14,30 +13,23 @@ public class Utils {
     public static final int REQUEST_CODE_ADD_ACTIVITY = 3;
     public static final int ACTIVITY_MODE_EDITING = 2;
     public static final int ACTIVITY_MODE_NOT_EDITING = 3;
-
     public static final String MODE = "MODE";
     public static final String EDITED = "EDITED";
     public static final String OPERATION = "OPERATION";
     public static final String UNKNOWN_MODE = "MODO DESCONHECIDO";
     public static final String PICK = "PICK";
-
     private static final String WS_NAME = "v1/";
-
     public static final String MYSHPREFS="MySharedPreferences";
-
     public static final String IP1="IP1";
     public static final String IP2="IP2";
     public static final String IP3="IP3";
     public static final String IP4="IP4";
-
-
     public static String getWSAddress(Context context){
         SharedPreferences settings = context.getSharedPreferences(MYSHPREFS, Context.MODE_PRIVATE);
         int ip1 = settings.getInt(IP1, 0);
         int ip2 = settings.getInt(IP2, 0);
         int ip3 = settings.getInt(IP3, 0);
         int ip4 = settings.getInt(IP4, 0);
-
         return "http://"+ip1+"."+ip2+"."+ip3+"."+ip4+":8585/"+WS_NAME;
     }
     public static void setWSAddress(Context context, int ip1,int ip2,int ip3,int ip4 ){
@@ -59,7 +51,7 @@ public class Utils {
         int ip2 = settings.getInt(IP2, 0);
         int ip3 = settings.getInt(IP3, 0);
         int ip4 = settings.getInt(IP4, 0);
-
         return ip1+"."+ip2+"."+ip3+"."+ip4;
+    }
     }*/
 }
