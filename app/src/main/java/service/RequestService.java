@@ -10,7 +10,7 @@ public class RequestService {
 
     public static Library getLibraryBook(String urlStr) {
         LibraryDTO libraryDTO = _getLibraryBook(urlStr);
-        Library library= Mapper.libraryDTO2livrary(libraryDTO);
+        Library library= Mapper.libraryDTO2Library(libraryDTO);
         return library;
     }
 

@@ -18,12 +18,12 @@ public class MenuActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.buttonBooks);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { openmenuactivity();
+            public void onClick(View v) { openMenuActivity();
             }
         });
     }
 
-    public void openmenuactivity() {
+    public void openMenuActivity() {
         Intent intent = new Intent(this, BooksActivity.class);
         startActivity(intent);
     }
