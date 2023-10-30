@@ -5,29 +5,25 @@ import android.graphics.Bitmap;
 public class Book {
 
     private String title;
-    private String author;
+    private Author author;
     private String isbn;
     private String description;
-    private Bitmap Icon;
+    private Bitmap icon;
     private String numberOfPages;
     private String publishDate;
+    private Review review;
 
-    private String Riview;
+    public Book(){}
 
-    private String Name;
-
-    public Book() {
-
-    }
-
-    public Book(String title, String author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate) {
+    public Book(String title, Author author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate, Review review) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.description = description;
-        this.Icon = icon;
+        this.icon = icon;
         this.numberOfPages = numberOfPages;
         this.publishDate = publishDate;
+        this.review = review;
     }
 
     public String getTitle() {
@@ -38,11 +34,11 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -80,24 +76,18 @@ public class Book {
         this.publishDate = publishDate;
     }
 
-    public String getName() {
-        return Name;
+    public void setIcon(Bitmap icon) {
+        this.icon = icon;
     }
 
-    public void setName(String name) {
-        Name = Name;
+    public Review getReview() {
+        return review;
     }
 
-    public void setIcon(Bitmap Icon) {
-        Icon = Icon;
-    }
+    public void setReview(Review review) {this.review = review;}
 
-    public String getRiview() {
-        return Riview;
-    }
-
-    public void setRiview(String riview) {
-        Riview = riview;
+    public Bitmap getIcon() {
+        return icon;
     }
 }
 

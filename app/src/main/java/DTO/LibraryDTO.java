@@ -1,4 +1,4 @@
-package dto;
+package DTO;
 
 import java.util.List;
 
@@ -15,7 +15,6 @@ public class LibraryDTO {
     public List<BookDTO> getBookDTOS() {
         return books; // TA MALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
     }
-
 
     public String getName() {
         return name;

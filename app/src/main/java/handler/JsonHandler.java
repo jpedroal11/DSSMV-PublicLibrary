@@ -1,4 +1,5 @@
 package handler;
+import DTO.LibraryDTO;
 import model.User;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
@@ -10,7 +11,11 @@ import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
 public class JsonHandler {
-    public class XmlSerializerUtils {
+    public static LibraryDTO deSerializeJson2LibraryDTO(String jsonString) {
+
+    }
+
+    public class XmlSerializerUtils{
         public String serializeToXml(List<?> objects, Map<String, String> serializationMap) {
             try {
                 StringWriter writer = new StringWriter();

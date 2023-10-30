@@ -1,15 +1,17 @@
+/*
+
 package service;
+
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
-//import pt.caf_pbs.schooldiskclient.dto.*;
 import handler.JsonHandler;
 import handler.NetworkHandler;
 import helper.Utils;
 
 import java.util.List;
-/*
+
 public class RequestsService {
     public static String lastUrl;
     public static SchoolInfo getSchoolInfo(Context c) {
@@ -156,4 +158,5 @@ public class RequestsService {
     }
 }
 
- */
+
+*/

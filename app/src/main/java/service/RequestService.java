@@ -1,6 +1,6 @@
 package service;
-import dto.LibraryDTO;
-import dto.Mapper;
+import DTO.LibraryDTO;
+import DTO.Mapper;
 import  model.Library;
 import network.HttpOperation;
 import handler.JsonHandler;

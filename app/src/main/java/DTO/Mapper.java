@@ -1,4 +1,4 @@
-package dto;
+package DTO;
 
 import model.Book;
 import model.Library;
@@ -9,15 +9,14 @@ import java.util.List;
 public class Mapper {
     public static Book bookDTO2book( BookDTO BOOKDTO) {
         Book book = new Book();
-        String title = new String(BOOKDTO.getName());
-        book.setName(title);
+        book.setTitle(BOOKDTO.getTitle());
         book.setIsbn(BOOKDTO.getIsbn());
         book.setIcon(BOOKDTO.getIcon());
-        book.setRiview(BOOKDTO.getRiview());
+        book.setReview(BOOKDTO.getReview());
         return book;
     }
 
-    public static Library libraryDTO2livrary(LibraryDTO libraryDTO) throws NullPointerException{
+    public static Library libraryDTO2Library(LibraryDTO libraryDTO) throws NullPointerException{
         List<Book> books = new ArrayList<>();
         List<BookDTO> booksDTO = libraryDTO.getBookDTOS();
         for (BookDTO bookDTO : booksDTO){
