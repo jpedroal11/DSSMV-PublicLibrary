@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 import com.example.dssmv_1211066_1210939.R;
+import model.Book;
 import model.Library;
 
 
@@ -16,9 +17,9 @@ public class ListViewAdapterLibrary extends BaseAdapter{
     private Context context;
     private List<Library> items;
 
-    public ListViewAdapterBook(Context context, List<Library> libraryList) {
+    public ListViewAdapterLibrary(Context context, List<Library> items) {
         this.context = context;
-        this.items = libraryList;
+        this.items = items;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class ListViewAdapterLibrary extends BaseAdapter{
         Book book = items.get(position);
         bookIcon.setImageBitmap(book.getIcon());
         titleTextView.setText(book.getTitle());
-        authorTextView.setText(getAuthorName(position));
+        authorTextView.setText(getAuthor(position));
         descriptionTextView.setText(getDescription(position));
 
         return itemView;

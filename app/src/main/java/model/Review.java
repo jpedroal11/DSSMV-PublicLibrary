@@ -7,9 +7,9 @@ public class Review {
     private String isbn;
     private Boolean recommended;
     private String review;
-    private String reviewer;
+    private User reviewer;
 
-    public Review(String createdDate, String id, String isbn, Boolean recommended, String review, String reviewer) {
+    public Review(String createdDate, String id, String isbn, Boolean recommended, String review, User reviewer) {
         this.createdDate = createdDate;
         this.id = id;
         this.isbn = isbn;
@@ -38,7 +38,7 @@ public class Review {
 
     public void setReview(String review) {this.review = review;}
 
-    public String getReviewer() {return reviewer;}
+    public User getReviewer() {return reviewer;}
 
-    public void setReviewer(String reviewer) {this.reviewer = reviewer;}
+    public void setReviewer(User reviewer) {this.reviewer = reviewer;}
 }
