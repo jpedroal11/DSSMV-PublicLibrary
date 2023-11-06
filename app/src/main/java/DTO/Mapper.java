@@ -27,7 +27,14 @@ public class Mapper {
         return res;
     }
 
-
+    public static List<Book> listInstructorDTO2listInstructor(List<BookDTO>  list) throws NullPointerException {
+        List<Book> data = new ArrayList();
+        for (BookDTO obj : list) {
+            Book i = bookDTO2book(obj);
+            data.add(i);
+        }
+        return data;
+    }
 }
 
 

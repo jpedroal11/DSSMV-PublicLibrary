@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
  */
 public class Utils {
     public static final String ID = "INITIALS";
-    /*public static final String ID = "INITIALS";
     public static final String NAME = "NAME";
     public static final int REQUEST_CODE_EDIT_ACTIVITY = 1;
     public static final int REQUEST_CODE_DELETE_ACTIVITY = 2;
@@ -53,5 +52,4 @@ public class Utils {
         int ip4 = settings.getInt(IP4, 0);
         return ip1+"."+ip2+"."+ip3+"."+ip4;
     }
-    }*/
 }

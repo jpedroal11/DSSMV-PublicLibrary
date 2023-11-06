@@ -2,6 +2,8 @@ package handler;
 import java.util.ArrayList;
 
 import DTO.ReviewDTO;
+import android.graphics.Bitmap;
+import model.Author;
 import model.Review;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,11 +37,13 @@ public class JsonHandler {
             for(int i = 0; i<jsonResponse.length();i++){
                 String author = "";
                 JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
-                String stock = jsonChildNode.optString("stock");
+                String title = jsonChildNode.optString("title");
+                String description = jsonChildNode.optString("description");
+                String numberOfPages = jsonChildNode.optString("numberOfPages");
+                String publishDate = jsonChildNode.optString("publishDate");
                 String isbn = jsonChildNode.optString("isbn");
                 JSONObject _jsonChildNode = jsonChildNode.optJSONObject("book");
-                String title = _jsonChildNode.optString("title");
-                JSONArray __jsonChildNode = _jsonChildNode.optJSONArray("authors");--
+                JSONArray __jsonChildNode = _jsonChildNode.optJSONArray("authors");
                 for (int j = 0; j < __jsonChildNode.length() ; j++){
                     JSONObject json = __jsonChildNode.getJSONObject(j);
                     if (j==0) {
@@ -47,7 +51,7 @@ public class JsonHandler {
                     }
                 }
 
-                list.add(new BookDTO(isbn, title, author, stock));
+                list.add(new BookDTO(title, author, isbn, description, icon, numberOfPages, publishDate, review));
             }
             return list;
         }
