@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
  * Created by paulo on 09-06-2017.
  */
 public class Utils {
-    public static final String ID = "INITIALS";
     public static final String NAME = "NAME";
     public static final int REQUEST_CODE_EDIT_ACTIVITY = 1;
     public static final int REQUEST_CODE_DELETE_ACTIVITY = 2;
@@ -29,7 +28,7 @@ public class Utils {
         int ip2 = settings.getInt(IP2, 0);
         int ip3 = settings.getInt(IP3, 0);
         int ip4 = settings.getInt(IP4, 0);
-        return "http://"+ip1+"."+ip2+"."+ip3+"."+ip4+":8585/"+WS_NAME;
+        return "http://"+ip1+"."+ip2+"."+ip3+"."+ip4+"/"+WS_NAME;
     }
     public static void setWSAddress(Context context, int ip1,int ip2,int ip3,int ip4 ){
         SharedPreferences settings = context.getSharedPreferences(MYSHPREFS,Context.MODE_PRIVATE);

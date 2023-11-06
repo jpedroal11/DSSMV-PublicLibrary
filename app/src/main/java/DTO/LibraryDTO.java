@@ -14,12 +14,22 @@ public class LibraryDTO {
     private String openStatement;
     private LocalTime openTime;
     private LocalTime closeTime;
-    private List books;
 
-    public List<BookDTO> getBookDTOS() {
-        return books;
+
+    public LibraryDTO(String address, String id, String name, Boolean open, String openDays, String openStatement, LocalTime openTime, LocalTime closeTime) {
+        this.address = address;
+        this.id = id;
+        this.name = name;
+        this.open = open;
+        this.openDays = openDays;
+        this.openStatement = openStatement;
+        this.openTime = openTime;
+        this.closeTime = closeTime;
+
     }
 
+    public LibraryDTO() {
+    }
 
     public String getAddress() {
         return address;
@@ -73,23 +83,15 @@ public class LibraryDTO {
         return openTime;
     }
 
-    public void setOpenTime(LocalTime openTime) {
-        this.openTime = openTime;
+    public void setOpenTime(int hour, int minute, int second, int nano) {
+        LocalTime openTime = new LocalTime(hour, minute, second, nano);
     }
 
     public LocalTime getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(LocalTime closeTime) {
-        this.closeTime = closeTime;
-    }
-
-    public List getBooks() {
-        return books;
-    }
-
-    public void setBooks(List books) {
-        this.books = books;
+    public void setCloseTime(int hour, int minute, int second, int nano) {
+        LocalTime closeTime = new LocalTime(hour, minute, second, nano);
     }
 }

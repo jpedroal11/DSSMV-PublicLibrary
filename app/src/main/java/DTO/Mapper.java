@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
-    public static Book bookDTO2book( BookDTO BOOKDTO) {
+
+    /*public static Book bookDTO2book( BookDTO BOOKDTO) {
         Book book = new Book();
         book.setTitle(BOOKDTO.getTitle());
         book.setIsbn(BOOKDTO.getIsbn());
@@ -25,7 +26,7 @@ public class Mapper {
         }
         Library res = new Library(libraryDTO.getName(),books);
         return res;
-    }
+    }*/
 
     public static List<Book> listInstructorDTO2listInstructor(List<BookDTO>  list) throws NullPointerException {
         List<Book> data = new ArrayList();

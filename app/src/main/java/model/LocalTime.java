@@ -4,47 +4,47 @@ import org.jetbrains.annotations.NotNull;
 
 public class LocalTime {
 
-    private Integer hour;
-    private Integer minute;
-    private Integer second;
-    private Integer nano;
+    private int hour;
+    private int minute;
+    private int second;
+    private int nano;
 
-    public LocalTime(Integer hour, Integer minute, Integer second, Integer nano) {
+    public LocalTime(int hour, int minute, int second, int nano) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
         this.nano = nano;
     }
 
-    public Integer getHour() {
+    public int getHour() {
         return hour;
     }
 
-    public void setHour(Integer hour) {
+    public void setHour(int hour) {
         this.hour = hour;
     }
 
-    public Integer getMinute() {
+    public int getMinute() {
         return minute;
     }
 
-    public void setMinute(Integer minute) {
+    public void setMinute(int minute) {
         this.minute = minute;
     }
 
-    public Integer getSecond() {
+    public int getSecond() {
         return second;
     }
 
-    public void setSecond(Integer second) {
+    public void setSecond(int second) {
         this.second = second;
     }
 
-    public Integer getNano() {
+    public int getNano() {
         return nano;
     }
 
-    public void setNano(Integer nano) {
+    public void setNano(int nano) {
         this.nano = nano;
     }
 

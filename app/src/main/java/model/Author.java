@@ -2,6 +2,8 @@ package model;
 
 import android.graphics.Bitmap;
 
+import java.util.List;
+
 public class Author {
 
     private String id;
@@ -9,10 +11,10 @@ public class Author {
     private String bio;
     private String birthDate;
     private Bitmap deathDate;
-    private String alternateNames;
+    private List<String> alternateNames;
 
 
-    public Author(String id, String name, String bio, String birthDate, Bitmap deathDate, String alternateNames) {
+    public Author(String id, String name, String bio, String birthDate, Bitmap deathDate, List<String> alternateNames) {
         this.id = id;
         this.name = name;
         this.bio = bio;
@@ -41,7 +43,7 @@ public class Author {
 
     public void setDeathDate(Bitmap deathDate) {this.deathDate = deathDate;}
 
-    public String getAlternateNames() {return alternateNames;}
+    public List<String> getAlternateNames() {return alternateNames;}
 
-    public void setAlternateNames(String alternateNames) {this.alternateNames = alternateNames;}
+    public void setAlternateNames(List<String> alternateNames) {this.alternateNames = alternateNames;}
 }

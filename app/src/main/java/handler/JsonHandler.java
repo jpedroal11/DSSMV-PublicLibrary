@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import DTO.ReviewDTO;
 import android.graphics.Bitmap;
 import model.Author;
+import model.LocalTime;
 import model.Review;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,81 +16,59 @@ import java.util.List;
 
 public class JsonHandler {
 
-        public static LibraryDTO deSerializeJsonToLibraryInformationDTO(String resp) throws JSONException {
-            LibraryDTO data = new LibraryDTO();
-            JSONObject mResponseObject = new JSONObject(resp);
-            data.setName(mResponseObject.getString("name"));
-            data.setAddress(mResponseObject.getString("address"));
-            data.setOpenTime(mResponseObject.getString("openTime"));
-            data.setCloseTime(mResponseObject.getString("closeTime"));
-            data.setOpenDays(mResponseObject.getString("openDays"));
-            return data;
+    public static LibraryDTO deSerializeJson2LibraryDTO(String resp) throws JSONException {
+        LibraryDTO data = new LibraryDTO();
+        JSONObject mResponseObject = new JSONObject(resp);
+        data.setAddress(mResponseObject.getString("address"));
+        //Create closeTime object
+        data.setCloseTime(mResponseObject.getJSONObject("closeTime").getInt("hour")
+                ,mResponseObject.getJSONObject("closeTime").getInt("minute")
+                ,mResponseObject.getJSONObject("closeTime").getInt("nano")
+                ,mResponseObject.getJSONObject("closeTime").getInt("second"));
+        data.setId(mResponseObject.getString("id"));
+        data.setName(mResponseObject.getString("name"));
+        data.setOpen(mResponseObject.getBoolean("open"));
+        data.setOpenDays(mResponseObject.getString("openDays"));
+        data.setOpenStatement(mResponseObject.getString("openStatement"));
+        //Create openTime object
+        data.setOpenTime(mResponseObject.getJSONObject("openTime").getInt("hour")
+                ,mResponseObject.getJSONObject("openTime").getInt("minute")
+                ,mResponseObject.getJSONObject("openTime").getInt("nano")
+                ,mResponseObject.getJSONObject("openTime").getInt("second"));
+
+        return data;
+    }
+
+    public static List<LibraryDTO> deSerializeJson2ListLibraryDTO(String resp) throws JSONException {
+        JSONArray jsonResponse = new JSONArray(resp);
+        List<LibraryDTO> list = new ArrayList<>();
+        for(int i = 0; i<jsonResponse.length();i++){
+            JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
+            String address = jsonChildNode.optString("address");
+            String name = jsonChildNode.optString("name");
+            String id = jsonChildNode.optString("id");
+            boolean open = jsonChildNode.optBoolean("open");
+            String openDays = jsonChildNode.optString("openDays");
+            String openStatement = jsonChildNode.optString("openStatement");
+            //Create a new object through a new JSONObject instance
+            JSONObject _jsonChildNode = jsonChildNode.optJSONObject("closeTime");
+            int hour = _jsonChildNode.optInt("hour");
+            int minute = _jsonChildNode.optInt("minute");
+            int nano = _jsonChildNode.optInt("nano");
+            int second = _jsonChildNode.optInt("second");
+            LocalTime closeTime = new LocalTime(hour, minute,nano,second);
+            //Create a new object through a new JSONObject instance
+            _jsonChildNode = jsonChildNode.optJSONObject("openTime");
+            hour = _jsonChildNode.optInt("hour");
+            minute = _jsonChildNode.optInt("minute");
+            nano = _jsonChildNode.optInt("nano");
+            second = _jsonChildNode.optInt("second");
+            LocalTime openTime = new LocalTime(hour, minute,nano,second);
+
+            list.add(new LibraryDTO(address , id, name, open, openDays, openStatement, openTime, closeTime));
         }
-        /*public static String serializeStockDTOToJson(StockDTO obj) throws JSONException {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("stock", obj.getStock());
-            return jsonObject.toString();
+        return list;
+    }
 
-        }*/
-        public static List<BookDTO> deSerializeJsonToListBookDTO(String resp) throws JSONException {
-            JSONArray jsonResponse = new JSONArray(resp);
-            List<BookDTO> list = new ArrayList<>();
-            for(int i = 0; i<jsonResponse.length();i++){
-                String author = "";
-                JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
-                String title = jsonChildNode.optString("title");
-                String description = jsonChildNode.optString("description");
-                String numberOfPages = jsonChildNode.optString("numberOfPages");
-                String publishDate = jsonChildNode.optString("publishDate");
-                String isbn = jsonChildNode.optString("isbn");
-                JSONObject _jsonChildNode = jsonChildNode.optJSONObject("book");
-                JSONArray __jsonChildNode = _jsonChildNode.optJSONArray("authors");
-                for (int j = 0; j < __jsonChildNode.length() ; j++){
-                    JSONObject json = __jsonChildNode.getJSONObject(j);
-                    if (j==0) {
-                        author = json.optString("name");
-                    }
-                }
 
-                list.add(new BookDTO(title, author, isbn, description, icon, numberOfPages, publishDate, review));
-            }
-            return list;
-        }
-
-        public static String serializeAddReviewDTO2Json(ReviewDTO obj) throws JSONException {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("recommended", obj.getRecommended());
-            jsonObject.put("review", obj.getReview());
-            return jsonObject.toString();
-
-        }
-        public static List<ReviewDTO> deSerializeJson2ListCommentDTO(String resp) throws JSONException {
-            JSONArray jsonResponse = new JSONArray(resp);
-            List<ReviewDTO> list = new ArrayList<>();
-            for(int i = 0; i<jsonResponse.length();i++){
-                JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
-                Boolean recommended = jsonChildNode.getBoolean("recommended");
-                String opinion = jsonChildNode.optString("review");
-                String isbn = jsonChildNode.optString("isbn");
-                String userId = jsonChildNode.optString("reviewer");
-                list.add(new ReviewDTO(recommended, opinion, isbn, userId));
-            }
-            return list;
-        }
-        public static ReviewDTO deSerializeJson2CommentDTO(String resp) throws JSONException {
-            ReviewDTO data = new ReviewDTO();
-            JSONObject mResponseObject = new JSONObject(resp);
-            data.setRecommended(mResponseObject.getBoolean("recommended"));
-            data.setReview(mResponseObject.getString("review"));
-            data.setIsbn(mResponseObject.getString("isbn"));
-            data.setReviewer(mResponseObject.getString("reviewer"));
-            return data;
-        }
-
-        /*public static String serializeStockDTO2Json(StockDTO obj) throws JSONException {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("stock", obj.getStock());
-            return jsonObject.toString();
-
-        }*/
 }

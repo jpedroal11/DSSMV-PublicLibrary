@@ -1,7 +1,5 @@
 package DTO;
 
-import model.User;
-
 public class ReviewDTO {
     private String createdDate;
     private String id;
