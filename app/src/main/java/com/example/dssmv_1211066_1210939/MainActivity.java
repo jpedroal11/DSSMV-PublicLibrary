@@ -7,17 +7,18 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+    private Button menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        menuButton = (Button) findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { openMenuActivity();
+            public void onClick(View v) {
+                openMenuActivity();
             }
         });
     }

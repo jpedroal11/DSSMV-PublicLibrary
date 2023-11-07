@@ -36,7 +36,12 @@ public class ListViewAdapterBook extends BaseAdapter{
             return position;
         }
 
-        public String getTitle(int position) {
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return null;
+    }
+
+    public String getTitle(int position) {
             return items.get(position).getTitle();
         }
 
@@ -48,7 +53,7 @@ public class ListViewAdapterBook extends BaseAdapter{
             return items.get(position).getDescription();
         }
 
-        @Override
+        /*@Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View itemView;
             if (convertView == null) {
@@ -71,6 +76,6 @@ public class ListViewAdapterBook extends BaseAdapter{
             descriptionTextView.setText(getDescription(position));
 
             return itemView;
-        }
+        }*/
 
 }

@@ -6,9 +6,9 @@ public class ReviewDTO {
     private String isbn;
     private Boolean recommended;
     private String review;
-    private User reviewer;
+    private String reviewer;
 
-    public ReviewDTO(String createdDate, String id, String isbn, Boolean recommended, String review, User reviewer) {
+    public ReviewDTO(String createdDate, String id, String isbn, Boolean recommended, String review, String reviewer) {
         this.createdDate = createdDate;
         this.id = id;
         this.isbn = isbn;
@@ -57,11 +57,11 @@ public class ReviewDTO {
         this.review = review;
     }
 
-    public User getReviewer() {
+    public String getReviewer() {
         return reviewer;
     }
 
-    public void setReviewer(User reviewer) {
+    public void setReviewer(String reviewer) {
         this.reviewer = reviewer;
     }
 }

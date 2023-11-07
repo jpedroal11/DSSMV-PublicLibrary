@@ -7,6 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
+    public static List<Library> listLibraryDTO2listLibrary(List<LibraryDTO>  list) throws NullPointerException {
+        List<Library> data = new ArrayList();
+        for(LibraryDTO obj : list){
+            Library i = libraryDTO2Library(obj);
+            data.add(i);
+        }
+        return data;
+    }
+
+    private static Library libraryDTO2Library(LibraryDTO obj) {
+
+        Library data = new Library(obj.getAddress(), obj.getId(), obj.getName(), obj.getOpen(), obj.getOpenDays(), obj.getOpenStatement(), obj.getOpenTime(), obj.getCloseTime());
+        return data;
+
+    }
 
     /*public static Book bookDTO2book( BookDTO BOOKDTO) {
         Book book = new Book();
@@ -28,14 +43,6 @@ public class Mapper {
         return res;
     }*/
 
-    public static List<Book> listInstructorDTO2listInstructor(List<BookDTO>  list) throws NullPointerException {
-        List<Book> data = new ArrayList();
-        for (BookDTO obj : list) {
-            Book i = bookDTO2book(obj);
-            data.add(i);
-        }
-        return data;
-    }
 }
 
 

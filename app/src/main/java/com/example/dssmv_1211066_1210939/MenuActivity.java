@@ -8,23 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Button button;
+    private Button buttonLibrary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuactivity);
 
-        button = (Button) findViewById(R.id.buttonBooks);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonLibrary = (Button) findViewById(R.id.buttonLibrary);
+        buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { openMenuActivity();
+            public void onClick(View v) {
+                openLibraryActivity();
             }
         });
     }
 
-    public void openMenuActivity() {
-        Intent intent = new Intent(this, BooksActivity.class);
+    public void openLibraryActivity() {
+        Intent intent = new Intent(this, LibraryActivity.class);
         startActivity(intent);
     }
 }

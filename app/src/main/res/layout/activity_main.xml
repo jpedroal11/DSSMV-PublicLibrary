@@ -6,19 +6,24 @@
                 tools:context="com.example.dssmv_1211066_1210939.MainActivity">
 
     <TextView
-            android:id="@+id/textView"
+            android:id="@+id/welcomeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Welcome to the World of Books" />
-
     <Button
-            android:id="@+id/button"
+            android:text="Menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_centerHorizontal="true"
-            android:text="Next" />
+            android:id="@+id/menuButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="155dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="272dp"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/welcomeTextView"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="162dp"/>
 
 </RelativeLayout>

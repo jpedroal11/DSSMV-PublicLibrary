@@ -41,7 +41,7 @@ public class BooksActivity extends AppCompatActivity {
         });
 
     }
-    private void getLibraryBook(String urlStr){
+    /*private void getLibraryBook(String urlStr){
 
         new Thread(){
             public void run(){
@@ -63,7 +63,7 @@ public class BooksActivity extends AppCompatActivity {
                 }
             }
         }.start();
-    }
+    }*/
 
 
 

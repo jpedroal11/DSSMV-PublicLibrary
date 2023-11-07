@@ -17,12 +17,9 @@ public class Library {
     private List books;
 
 
-    public Library(String Name, List<Book> books) {
-        this.name= name;
-        this.books = books;
-    }
+    public Library() {}
 
-    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement, LocalTime openTime, LocalTime closeTime, List books) {
+    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement, LocalTime openTime, LocalTime closeTime) {
         this.address = address;
         this.id = id;
         this.name = name;
@@ -31,15 +28,10 @@ public class Library {
         this.openStatement = openStatement;
         this.openTime = openTime;
         this.closeTime = closeTime;
-        this.books = books;
     }
 
 
     public String getAddress() {return address;}
-
-    public List getBooks() {return books;}
-
-    public void setBooks(List books) {this.books = books;}
 
     public void setAddress(String address) {this.address = address;}
 
