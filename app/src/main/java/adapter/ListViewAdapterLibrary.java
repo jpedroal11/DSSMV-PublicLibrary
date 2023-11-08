@@ -1,4 +1,5 @@
 package adapter;
+import DTO.LibraryDTO;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.List;
 import com.example.dssmv_1211066_1210939.R;
 import model.Book;
@@ -22,14 +25,18 @@ public class ListViewAdapterLibrary extends BaseAdapter{
         this.items = items;
     }
 
+    public String getName(int position) {
+        return this.items.get(position).getName();
+    }
+
     @Override
     public int getCount() {
-        return items.size();
+        return this.items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return items.get(position);
+        return this.items.get(position);
     }
 
     @Override
@@ -38,17 +45,29 @@ public class ListViewAdapterLibrary extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View itemView = null;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            itemView = inflater.inflate(R.layout.list_item, null);
+        } else {
+            itemView = convertView;
+        }
+
+        TextView tv = (TextView) itemView.findViewById(R.id.textview_line);
+
+        tv.setText(getName(position));
+
+        return itemView;
     }
 
     public String getAddress(int position) {
         return items.get(position).getAddress();
     }
 
-    public String getName(int position) {
-        return items.get(position).getName();
-    }
+
+
+
 
 
 
@@ -57,7 +76,7 @@ public class ListViewAdapterLibrary extends BaseAdapter{
         View itemView;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            itemView = inflater.inflate(R.layout.library_list_item, null); // Assuming you have a layout file named book_list_item.xml.
+            itemView = inflater.inflate(R.layout.librariesListView, null);
         } else {
             itemView = convertView;
         }

@@ -51,7 +51,7 @@ public class LocalTime {
     @Override
     @NotNull
     public String toString() {
-        return String.format("LocalTime[hour=%d, minute=%d, nano=%d, second=%d]", hour, minute, second, nano);
+        return String.format("LocalTime[hour=%d, minute=%d, second=%d, nano=%]", hour, minute, second, nano);
     }
 
 }

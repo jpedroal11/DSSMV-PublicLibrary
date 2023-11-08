@@ -12,14 +12,14 @@ public class Library {
     private Boolean open;
     private String openDays;
     private String openStatement;
-    private LocalTime openTime;
-    private LocalTime closeTime;
-    private List books;
+    private String openTime;
+    private String closeTime;
+
 
 
     public Library() {}
 
-    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement, LocalTime openTime, LocalTime closeTime) {
+    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
         this.address = address;
         this.id = id;
         this.name = name;
@@ -55,12 +55,12 @@ public class Library {
 
     public void setOpenStatement(String openStatement) {this.openStatement = openStatement;}
 
-    public LocalTime getOpenTime() {return openTime;}
+    public String getOpenTime() {return openTime;}
 
-    public void setOpenTime(LocalTime openTime) {this.openTime = openTime;}
+    public void setOpenTime(String openTime) {this.openTime = openTime;}
 
-    public LocalTime getCloseTime() {return closeTime;}
+    public String getCloseTime() {return closeTime;}
 
-    public void setCloseTime(LocalTime closeTime) {this.closeTime = closeTime;}
+    public void setCloseTime(String closeTime) {this.closeTime = closeTime;}
 
 }

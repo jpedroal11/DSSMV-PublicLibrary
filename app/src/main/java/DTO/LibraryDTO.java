@@ -12,11 +12,11 @@ public class LibraryDTO {
     private Boolean open;
     private String openDays;
     private String openStatement;
-    private LocalTime openTime;
-    private LocalTime closeTime;
+    private String openTime;
+    private String closeTime;
 
 
-    public LibraryDTO(String address, String id, String name, Boolean open, String openDays, String openStatement, LocalTime openTime, LocalTime closeTime) {
+    public LibraryDTO(String address, String id, String name, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
         this.address = address;
         this.id = id;
         this.name = name;
@@ -79,19 +79,11 @@ public class LibraryDTO {
         this.openStatement = openStatement;
     }
 
-    public LocalTime getOpenTime() {
-        return openTime;
-    }
+    public String getOpenTime() {return openTime;}
 
-    public void setOpenTime(int hour, int minute, int second, int nano) {
-        LocalTime openTime = new LocalTime(hour, minute, second, nano);
-    }
+    public void setOpenTime(String openTime) {this.openTime = openTime;}
 
-    public LocalTime getCloseTime() {
-        return closeTime;
-    }
+    public String getCloseTime() {return closeTime;}
 
-    public void setCloseTime(int hour, int minute, int second, int nano) {
-        LocalTime closeTime = new LocalTime(hour, minute, second, nano);
-    }
+    public void setCloseTime(String closeTime) {this.closeTime = closeTime;}
 }
