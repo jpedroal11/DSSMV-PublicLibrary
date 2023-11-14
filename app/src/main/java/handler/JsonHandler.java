@@ -41,6 +41,20 @@ public class JsonHandler {
         return data;
     }
 
+    public static String serializeLibraryDTO2Json(LibraryDTO obj) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("address", obj.getAddress());
+        jsonObject.put("closeTime", obj.getCloseTime());
+        jsonObject.put("name", obj.getName());
+        jsonObject.put("open", obj.getOpen());
+        jsonObject.put("openDays", obj.getOpenDays());
+        jsonObject.put("openStatement", obj.getOpenStatement());
+        jsonObject.put("openTime", obj.getOpenTime());
+
+        return jsonObject.toString();
+
+    }
+
     public static List<LibraryDTO> deSerializeJson2ListLibraryDTO(String resp) throws JSONException {
         JSONArray jsonResponse = new JSONArray(resp);
         List<LibraryDTO> list = new ArrayList<>();

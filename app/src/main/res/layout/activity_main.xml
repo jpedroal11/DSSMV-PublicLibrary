@@ -14,16 +14,16 @@
             android:text="Welcome to the World of Books" />
     <Button
             android:text="Menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="127dp"
+            android:layout_height="59dp"
             android:id="@+id/menuButton"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="155dp"
+            android:layout_marginEnd="144dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="272dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="25dp"
             android:layout_below="@+id/welcomeTextView"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="162dp"/>
+            android:layout_marginStart="139dp"/>
 
 </RelativeLayout>

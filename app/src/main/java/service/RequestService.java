@@ -12,6 +12,8 @@ import  model.Library;
 
 import handler.JsonHandler;
 import handler.NetworkHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -39,6 +41,24 @@ public class RequestService {
             });
         }
         return null;
+    }
+
+
+    public static void createLibrary(LibraryDTO libraryDTO, Activity activity) {
+        try{
+            String url = Utils.getWSAddress(activity)+"library";
+            lastUrl = url;
+            String json = JsonHandler.serializeLibraryDTO2Json(libraryDTO);
+            String result = NetworkHandler.addDataInStringFromUrl(url, json);
+        }catch(Exception e){
+            e.printStackTrace();
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity, "createLibrary Error"+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
 
