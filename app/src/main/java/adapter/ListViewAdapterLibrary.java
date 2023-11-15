@@ -65,38 +65,4 @@ public class ListViewAdapterLibrary extends BaseAdapter{
         return items.get(position).getAddress();
     }
 
-
-
-
-
-
-
-    /*@Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View itemView;
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            itemView = inflater.inflate(R.layout.librariesListView, null);
-        } else {
-            itemView = convertView;
-        }
-
-
-        //MUDAR PARA OS ATRIBUTOS DA LIBRARY
-
-        ImageView bookIcon = itemView.findViewById(R.id.book_icon);
-        TextView titleTextView = itemView.findViewById(R.id.title_text_view);
-        TextView authorTextView = itemView.findViewById(R.id.author_text_view);
-        TextView descriptionTextView = itemView.findViewById(R.id.description_text_view);
-
-        // Set the values in the views
-        Book book = items.get(position);
-        bookIcon.setImageBitmap(book.getIcon());
-        titleTextView.setText(book.getTitle());
-        authorTextView.setText(getAuthor(position));
-        descriptionTextView.setText(getDescription(position));
-
-        return itemView;
-    }*/
-
 }

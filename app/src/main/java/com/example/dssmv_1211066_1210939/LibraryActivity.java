@@ -3,6 +3,7 @@ package com.example.dssmv_1211066_1210939;
 
 import DTO.LibraryDTO;
 import adapter.ListViewAdapterLibrary;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.ContextMenu;
@@ -55,6 +56,8 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
                 postLibrary2WS(testLibrary);
             }
         });
+
+        lv.setOnItemClickListener(this::onItemClick);
     }
 
     @Override
@@ -125,6 +128,7 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         }
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
     {
@@ -136,10 +140,10 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
     @Override
     public boolean onContextItemSelected(MenuItem item){
         if(item.getItemId()==R.id.edit){
-            Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Entered edit mode",Toast.LENGTH_SHORT).show();
         }
         else if(item.getItemId()==R.id.delete){
-            Toast.makeText(getApplicationContext(),"sending sms code",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Entered delete mode",Toast.LENGTH_SHORT).show();
         }else{
             return false;
         }
