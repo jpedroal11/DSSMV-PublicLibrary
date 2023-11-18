@@ -18,6 +18,9 @@
             android:theme="@style/Theme.DSSMV_1211066_1210939"
             android:usesCleartextTraffic="true">
         <activity
+                android:name=".CreateLibraryBookActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".LibraryBookActivity"
                 android:exported="false"/>
         <activity

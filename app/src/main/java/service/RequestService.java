@@ -1,8 +1,5 @@
 package service;
-import DTO.BookDTO;
-import DTO.LibraryBookDTO;
-import DTO.LibraryDTO;
-import DTO.Mapper;
+import DTO.*;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -139,8 +136,22 @@ public class RequestService {
         return null;
     }
 
-
-
+    public static void createLibraryBook(CreateLibraryBookRequestDTO libraryBookRequestDTO, Activity activity, String libraryId, String isbn) {
+        try{
+            String url = Utils.getWSAddress(activity)+"library/" + libraryId + "/book/" + isbn;
+            lastUrl = url;
+            String json = JsonHandler.serializeCreateLibraryBookRequestDTO2Json(libraryBookRequestDTO);
+            String result = NetworkHandler.addDataInStringFromUrl(url, json);
+        }catch(Exception e){
+            e.printStackTrace();
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity, "createLibraryBookRequest Error"+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 }
 
 

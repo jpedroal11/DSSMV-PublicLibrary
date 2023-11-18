@@ -174,6 +174,11 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
                 intent.putExtra("libraryId", libraryId);
                 startActivity(intent);
                 return true;
+            case R.id.create:
+                Intent createIntent = new Intent(LibraryActivity.this, CreateLibraryBookActivity.class);
+                createIntent.putExtra("libraryId", libraryId);
+                startActivity(createIntent);
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

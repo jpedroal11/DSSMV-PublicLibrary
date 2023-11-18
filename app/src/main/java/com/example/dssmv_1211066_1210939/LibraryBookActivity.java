@@ -27,17 +27,19 @@ public class LibraryBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_book);
 
+        getLibraryBooksFromWs();
+
         Intent intent = getIntent();
         libraryId = intent.getStringExtra("libraryId");
 
         lv = findViewById(R.id.libraryBooksListView);
         libraryBooksList = new ArrayList<>();
-        adapter = new ListViewAdapterLibraryBook(this, libraryBooksList); // Initialize the adapter
-        lv.setAdapter(adapter); // Set the adapter to the ListView
 
-        getLibraryBooksFromWs();
+        adapter = new ListViewAdapterLibraryBook(this, libraryBooksList);
+        lv.setAdapter(adapter);
+
+
     }
-
 
     private void getLibraryBooksFromWs() {
         new Thread() {
