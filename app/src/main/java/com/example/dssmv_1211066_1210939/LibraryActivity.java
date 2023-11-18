@@ -66,33 +66,6 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
             }
         });
 
-        /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View view,int position, long id) {
-
-                Button delete = (Button)findViewById(R.id.delete);
-                delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Library libraryPosition = (Library)lv.getItemAtPosition(position);
-                        String libraryId = libraryPosition.getId();
-                        deleteLibrary2WS(libraryId);
-                    }
-                });
-
-                Button edit = (Button) findViewById(R.id.edit);
-                edit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Library libraryPosition = (Library)lv.getItemAtPosition(position);
-                        String libraryId = libraryPosition.getId();
-                        Intent i = new Intent(LibraryActivity.this, EditLibraryActivity.class);
-                        i.putExtra("libraryId", libraryId);
-                        startActivity(i);
-                    }
-                });
-            }
-        });*/
-
         lv.setOnItemClickListener(this::onItemClick);
     }
 
@@ -172,22 +145,6 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         inflater.inflate(R.layout.menu_library, menu);
         menu.setHeaderTitle("Select The Action");
     }
-    /*@Override
-    public boolean onContextItemSelected(MenuItem item){
-
-        if(item.getItemId()==R.id.edit){
-            Toast.makeText(getApplicationContext(),"Edit mode",Toast.LENGTH_SHORT).show();
-
-        }
-        else if(item.getItemId()==R.id.delete){
-            Toast.makeText(getApplicationContext(),"Library deleted",Toast.LENGTH_SHORT).show();
-
-
-        }else{
-            return false;
-        }
-        return true;
-    }*/
 
     public void openCreateLibraryActivity() {
         Intent intent = new Intent(this, CreateLibraryActivity.class);

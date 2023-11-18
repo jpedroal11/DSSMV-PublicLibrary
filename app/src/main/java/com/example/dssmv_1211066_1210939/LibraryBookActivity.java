@@ -35,7 +35,7 @@ public class LibraryBookActivity extends AppCompatActivity {
                     public void run() {
                     }
                 });
-                //libraryBookDTOS = RequestService.getLibraryBooks(LibraryBookActivity.this, libraryId);
+               // libraryBookDTOS = RequestService.getLibraryBooks(LibraryBookActivity.this, libraryId);
                 libraryBooksList.clear();
                 if (libraryBookDTOS == null){
                     return;

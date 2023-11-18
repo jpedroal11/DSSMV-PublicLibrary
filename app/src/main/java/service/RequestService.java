@@ -30,7 +30,6 @@ public class RequestService {
             String url = Utils.getWSAddress(c)+"library";
             lastUrl = url;
             String json = NetworkHandler.getDataInStringFromUrl(url);
-            Log.d("json1", json);
             List<LibraryDTO> libraryDTOS = JsonHandler.deSerializeJson2ListLibraryDTO(json);
             List<Library> libraries = Mapper.listLibraryDTO2listLibrary(libraryDTOS);
             return libraries;
@@ -121,7 +120,7 @@ public class RequestService {
 
     public static List<LibraryBook> getLibraryBooks(Activity c, String libraryId) {
         try{
-            String url = Utils.getWSAddress(c)+"library"+ libraryId +"/books";
+            String url = Utils.getWSAddress(c)+"library" + libraryId + "/books";
             lastUrl = url;
             String json = NetworkHandler.getDataInStringFromUrl(url);
             List<LibraryBookDTO> libraryBookDTOS = JsonHandler.deSerializeJson2ListLibraryBookDTO(json);

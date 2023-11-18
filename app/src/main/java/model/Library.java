@@ -19,7 +19,7 @@ public class Library {
 
     public Library() {}
 
-    public Library(String address, String id, String name, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
+    public Library(String name, String id, String address, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
         this.address = address;
         this.id = id;
         this.name = name;

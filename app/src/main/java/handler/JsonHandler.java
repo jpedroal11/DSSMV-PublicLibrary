@@ -51,8 +51,8 @@ public class JsonHandler {
         List<LibraryDTO> list = new ArrayList<>();
         for(int i = 0; i<jsonResponse.length();i++){
             JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
-            String address = jsonChildNode.optString("address");
             String name = jsonChildNode.optString("name");
+            String address = jsonChildNode.optString("address");
             String id = jsonChildNode.optString("id");
             boolean open = jsonChildNode.optBoolean("open");
             String openDays = jsonChildNode.optString("openDays");
@@ -60,7 +60,7 @@ public class JsonHandler {
             String openTime = jsonChildNode.optString("openTime");
             String closeTime = jsonChildNode.optString("closeTime");
 
-            list.add(new LibraryDTO(address , id, name, open, openDays, openStatement, openTime, closeTime));
+            list.add(new LibraryDTO(name , id, address, open, openDays, openStatement, openTime, closeTime));
         }
         return list;
     }
