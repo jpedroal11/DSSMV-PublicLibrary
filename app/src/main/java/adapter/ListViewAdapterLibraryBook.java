@@ -53,7 +53,7 @@ public class ListViewAdapterLibraryBook extends BaseAdapter {
         // Use the LibraryBook instance to set the text (adjust this based on your LibraryBook properties)
         if (libraryBook != null) {
             // For example, if you want to display ISBN, change the property accordingly
-            tv.setText("Book Title: " + libraryBook.getBook().getTitle() + "\nISBN: " + libraryBook.getIsbn() + "\nByStatement: " + libraryBook.getBook().getByStatement() + "\nDescription: " + libraryBook.getBook().getDescription() + "\nNumber of Pages:" + libraryBook.getBook().getNumberOfPages() + "\nPublish Date:" + libraryBook.getBook().getPublishDate());
+            tv.setText("Book Title: " + libraryBook.getBook().getTitle() + "\nISBN: " + libraryBook.getIsbn() + "\nByStatement: " + libraryBook.getBook().getByStatement() + "\nDescription: " + libraryBook.getBook().getDescription() + "\nNumber of Pages:" + libraryBook.getBook().getNumberOfPages() + "\nPublish Date:" + libraryBook.getBook().getPublishDate() + "\nStock: " + libraryBook.getStock());
 
         }
 

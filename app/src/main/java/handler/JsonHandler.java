@@ -1,8 +1,7 @@
 package handler;
 import java.util.ArrayList;
 
-import DTO.LibraryBookDTO;
-import DTO.ReviewDTO;
+import DTO.*;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -12,8 +11,7 @@ import model.CoverUrls;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import DTO.LibraryDTO;
-import DTO.BookDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,6 +153,13 @@ public class JsonHandler {
 
 
         return library;
+    }
+
+    public static String serializeCreateLibraryBookRequestDTO2Json(CreateLibraryBookRequestDTO obj) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("stock", obj.getStock());
+
+        return jsonObject.toString();
     }
 
 
