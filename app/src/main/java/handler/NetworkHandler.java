@@ -166,10 +166,10 @@ public class NetworkHandler {
             httpConn.setDoInput(true);
             httpConn.connect();
             resCode = httpConn.getResponseCode();
-            if (resCode == HttpURLConnection.HTTP_OK) {
+            if (resCode == HttpURLConnection.HTTP_ACCEPTED) {
                 in = httpConn.getInputStream();
             }else{
-                throw new RuntimeException("rescode not 200. VALUE:"+resCode);
+                throw new RuntimeException("rescode not 202. VALUE:"+resCode);
             }
         }catch (MalformedURLException e) {
             e.printStackTrace();

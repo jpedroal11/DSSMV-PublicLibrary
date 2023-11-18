@@ -1,11 +1,13 @@
 package handler;
 import java.util.ArrayList;
 
+import DTO.LibraryBookDTO;
 import DTO.ReviewDTO;
 import android.graphics.Bitmap;
-import model.Author;
-import model.LocalTime;
-import model.Review;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import model.*;
+import model.CoverUrls;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,5 +64,34 @@ public class JsonHandler {
         }
         return list;
     }
+
+
+    public static List<LibraryBookDTO> deSerializeJson2ListLibraryBookDTO(String resp) throws JSONException {
+        JSONArray jsonResponse = new JSONArray(resp);
+        List<LibraryBookDTO> list = new ArrayList<>();
+        for(int i = 0; i<jsonResponse.length();i++){
+            JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
+            int available = jsonChildNode.getInt("available");
+            Book book = (Book) jsonChildNode.get("book");
+            int checkedOut = jsonChildNode.getInt("checkedOut");
+            String isbn = jsonChildNode.optString("isbn");
+            Library library = (Library) jsonChildNode.get("library");
+            int stock = jsonChildNode.getInt("stock");
+
+            list.add(new LibraryBookDTO(available, book, checkedOut, isbn, library, stock));
+        }
+        return list;
+    }
+
+
+    private static List<String> getListFromJsonArray(JSONArray jsonArray) throws JSONException {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            list.add(jsonArray.getString(i));
+        }
+        return list;
+    }
+
+
 
 }

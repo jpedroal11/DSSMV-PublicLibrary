@@ -61,8 +61,5 @@ public class ListViewAdapterLibrary extends BaseAdapter{
         return itemView;
     }
 
-    public String getAddress(int position) {
-        return items.get(position).getAddress();
-    }
 
 }

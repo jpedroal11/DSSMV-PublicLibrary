@@ -4,50 +4,58 @@ import android.graphics.Bitmap;
 
 public class Book {
 
-    private String title;
-    private Author author;
-    private String isbn;
+    private Author authors;
+    private String byStatement;
+    private CoverUrls cover;
     private String description;
-    private Bitmap icon;
+    private String isbn;
     private String numberOfPages;
     private String publishDate;
-    private Review review;
+    private String title;
+    private String subjectPeople;
+    private String subjectPlaces;
+    private String subjectTimes;
+    private String subjects;
 
-    public Book(){}
 
-    public Book(String title, Author author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate, Review review) {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
+
+    public Book(Author authors, String byStatement, CoverUrls cover, String description, String isbn, String numberOfPages, String publishDate, String title, String subjectPeople, String subjectPlaces, String subjectTimes, String subjects) {
+        this.authors = authors;
+        this.byStatement = byStatement;
+        this.cover = cover;
         this.description = description;
-        this.icon = icon;
+        this.isbn = isbn;
         this.numberOfPages = numberOfPages;
         this.publishDate = publishDate;
-        this.review = review;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
         this.title = title;
+        this.subjectPeople = subjectPeople;
+        this.subjectPlaces = subjectPlaces;
+        this.subjectTimes = subjectTimes;
+        this.subjects = subjects;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Author getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthors(Author authors) {
+        this.authors = authors;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getByStatement() {
+        return byStatement;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setByStatement(String byStatement) {
+        this.byStatement = byStatement;
+    }
+
+    public CoverUrls getCover() {
+        return cover;
+    }
+
+    public void setCover(CoverUrls cover) {
+        this.cover = cover;
     }
 
     public String getDescription() {
@@ -58,7 +66,13 @@ public class Book {
         this.description = description;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
 
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
     public String getNumberOfPages() {
         return numberOfPages;
@@ -76,18 +90,44 @@ public class Book {
         this.publishDate = publishDate;
     }
 
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
+    public String getTitle() {
+        return title;
     }
 
-    public Review getReview() {
-        return review;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setReview(Review review) {this.review = review;}
+    public String getSubjectPeople() {
+        return subjectPeople;
+    }
 
-    public Bitmap getIcon() {
-        return icon;
+    public void setSubjectPeople(String subjectPeople) {
+        this.subjectPeople = subjectPeople;
+    }
+
+    public String getSubjectPlaces() {
+        return subjectPlaces;
+    }
+
+    public void setSubjectPlaces(String subjectPlaces) {
+        this.subjectPlaces = subjectPlaces;
+    }
+
+    public String getSubjectTimes() {
+        return subjectTimes;
+    }
+
+    public void setSubjectTimes(String subjectTimes) {
+        this.subjectTimes = subjectTimes;
+    }
+
+    public String getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
     }
 }
 

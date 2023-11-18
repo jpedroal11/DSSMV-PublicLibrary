@@ -16,7 +16,13 @@
             android:theme="@style/Theme.DSSMV_1211066_1210939"
             android:usesCleartextTraffic="true">
         <activity
-                android:name=".activity_create_library"
+                android:name=".LibraryBookActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".EditLibraryActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".CreateLibraryActivity"
                 android:exported="false"/>
         <activity
                 android:name=".SettingsActivity"

@@ -46,7 +46,7 @@ public class ListViewAdapterBook extends BaseAdapter{
         }
 
         public String getAuthorName(int position) {
-            return items.get(position).getAuthor().getName(); // Assuming Author has a getName() method.
+            return items.get(position).getAuthors().getName(); // Assuming Author has a getName() method.
         }
 
         public String getDescription(int position) {

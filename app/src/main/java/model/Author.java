@@ -10,11 +10,11 @@ public class Author {
     private String name;
     private String bio;
     private String birthDate;
-    private Bitmap deathDate;
+    private String deathDate;
     private List<String> alternateNames;
 
 
-    public Author(String id, String name, String bio, String birthDate, Bitmap deathDate, List<String> alternateNames) {
+    public Author(String id, String name, String bio, String birthDate, String deathDate, List<String> alternateNames) {
         this.id = id;
         this.name = name;
         this.bio = bio;
@@ -39,9 +39,9 @@ public class Author {
 
     public void setBirthDate(String birthDate) {this.birthDate = birthDate;}
 
-    public Bitmap getDeathDate() {return deathDate;}
+    public String getDeathDate() {return deathDate;}
 
-    public void setDeathDate(Bitmap deathDate) {this.deathDate = deathDate;}
+    public void setDeathDate(String deathDate) {this.deathDate = deathDate;}
 
     public List<String> getAlternateNames() {return alternateNames;}
 

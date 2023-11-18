@@ -1,6 +1,11 @@
 package helper;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+import com.example.dssmv_1211066_1210939.LibraryActivity;
+
 /**
  * Created by paulo on 09-06-2017.
  */
@@ -22,6 +27,7 @@ public class Utils {
     public static final String IP2="IP2";
     public static final String IP3="IP3";
     public static final String IP4="IP4";
+
     public static String getWSAddress(Context context){
         SharedPreferences settings = context.getSharedPreferences(MYSHPREFS, Context.MODE_PRIVATE);
         int ip1 = settings.getInt(IP1, 0);

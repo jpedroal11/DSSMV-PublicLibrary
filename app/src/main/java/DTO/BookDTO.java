@@ -3,65 +3,65 @@ package DTO;
 import android.graphics.Bitmap;
 import model.Author;
 import model.Book;
+import model.CoverUrls;
 import model.Review;
 
 public class BookDTO {
 
-    private String title;
-    private Author author;
-    private String isbn;
+    private Author authors;
+    private String byStatement;
+    private CoverUrls cover;
     private String description;
-    private Bitmap icon;
+    private String isbn;
     private String numberOfPages;
     private String publishDate;
-    private Review review;
+    private String title;
+    private String subjectPeople;
+    private String subjectPlaces;
+    private String subjectTimes;
+    private String subjects;
 
 
-    public BookDTO(){}
+    public BookDTO() {
+    }
 
-    public BookDTO(String title, Author author, String isbn, String description, Bitmap icon, String numberOfPages, String publishDate, Review review) {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
+    public BookDTO(Author authors, String byStatement, CoverUrls cover, String description, String isbn, String numberOfPages, String publishDate, String title, String subjectPeople, String subjectPlaces, String subjectTimes, String subjects) {
+        this.authors = authors;
+        this.byStatement = byStatement;
+        this.cover = cover;
         this.description = description;
-        this.icon = icon;
+        this.isbn = isbn;
         this.numberOfPages = numberOfPages;
         this.publishDate = publishDate;
-        this.review = review;
-    }
-
-
-    public static Book bookDTO2book(BookDTO BOOKDTO) {
-        Book book = new Book();
-        book.setTitle(BOOKDTO.getTitle());
-        book.setIsbn(BOOKDTO.getIsbn());
-        book.setIcon(BOOKDTO.getIcon());
-        book.setReview(BOOKDTO.getReview());
-        return book;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
         this.title = title;
+        this.subjectPeople = subjectPeople;
+        this.subjectPlaces = subjectPlaces;
+        this.subjectTimes = subjectTimes;
+        this.subjects = subjects;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Author getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthors(Author authors) {
+        this.authors = authors;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getByStatement() {
+        return byStatement;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setByStatement(String byStatement) {
+        this.byStatement = byStatement;
+    }
+
+    public CoverUrls getCover() {
+        return cover;
+    }
+
+    public void setCover(CoverUrls cover) {
+        this.cover = cover;
     }
 
     public String getDescription() {
@@ -72,12 +72,12 @@ public class BookDTO {
         this.description = description;
     }
 
-    public Bitmap getIcon() {
-        return icon;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getNumberOfPages() {
@@ -96,12 +96,44 @@ public class BookDTO {
         this.publishDate = publishDate;
     }
 
-    public Review getReview() {
-        return review;
+    public String getTitle() {
+        return title;
     }
 
-    public void setReview(Review review) {
-        this.review = review;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubjectPeople() {
+        return subjectPeople;
+    }
+
+    public void setSubjectPeople(String subjectPeople) {
+        this.subjectPeople = subjectPeople;
+    }
+
+    public String getSubjectPlaces() {
+        return subjectPlaces;
+    }
+
+    public void setSubjectPlaces(String subjectPlaces) {
+        this.subjectPlaces = subjectPlaces;
+    }
+
+    public String getSubjectTimes() {
+        return subjectTimes;
+    }
+
+    public void setSubjectTimes(String subjectTimes) {
+        this.subjectTimes = subjectTimes;
+    }
+
+    public String getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
     }
 }
 

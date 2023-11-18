@@ -6,6 +6,7 @@ import adapter.ListViewAdapterLibrary;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,9 +32,9 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
     private List<Library> libraryDTOS;
     private ListViewAdapterLibrary adapter;
     private ActivityResultLauncher<Intent> someActivityResultLauncher;
-    String exceptionMessage = "";
-    boolean exception = false;
-    Button createLibraryButton;
+    private String exceptionMessage = "";
+    private boolean exception = false;
+    private String libraryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,20 +49,55 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         lv.setAdapter(adapter);
         registerForContextMenu(lv);
 
+
         Button createLibraryButton = (Button)findViewById(R.id.createLibraryButton);
         createLibraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LibraryDTO testLibrary = new LibraryDTO("Rua Teste 11", null, "Library Test", true, "Segunda a Sexta", "9AM até 6PM", "09:00:00", "18:00:00");
-                postLibrary2WS(testLibrary);
+                openCreateLibraryActivity();
             }
         });
+
+        Button refreshButton = (Button)findViewById(R.id.refreshButton); //FALTA TESTAR
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLibrariesFromWs();
+            }
+        });
+
+        /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View view,int position, long id) {
+
+                Button delete = (Button)findViewById(R.id.delete);
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Library libraryPosition = (Library)lv.getItemAtPosition(position);
+                        String libraryId = libraryPosition.getId();
+                        deleteLibrary2WS(libraryId);
+                    }
+                });
+
+                Button edit = (Button) findViewById(R.id.edit);
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Library libraryPosition = (Library)lv.getItemAtPosition(position);
+                        String libraryId = libraryPosition.getId();
+                        Intent i = new Intent(LibraryActivity.this, EditLibraryActivity.class);
+                        i.putExtra("libraryId", libraryId);
+                        startActivity(i);
+                    }
+                });
+            }
+        });*/
 
         lv.setOnItemClickListener(this::onItemClick);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id){ //Mostra os details de cada Library
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(libraryDTOS.get(position).getName()).append("\n");
         sb.append("Address: ").append(libraryDTOS.get(position).getAddress()).append("\n");
@@ -73,8 +109,6 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         String libraryDetailsText = sb.toString();
         CustomToast.makeText(getApplicationContext(), libraryDetailsText, Toast.LENGTH_LONG).show();
     }
-
-
 
     private void getLibrariesFromWs() {
         new Thread() {
@@ -100,14 +134,15 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         }.start();
     }
 
-    private void postLibrary2WS(LibraryDTO libraryDTO) {
+    private void deleteLibrary2WS(String id) {
         new Thread() {
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {}
                 });
-                RequestService.createLibrary(libraryDTO, LibraryActivity.this);
+
+                RequestService.deleteLibrary(id, LibraryActivity.this);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -137,18 +172,51 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
         inflater.inflate(R.layout.menu_library, menu);
         menu.setHeaderTitle("Select The Action");
     }
-    @Override
+    /*@Override
     public boolean onContextItemSelected(MenuItem item){
+
         if(item.getItemId()==R.id.edit){
-            Toast.makeText(getApplicationContext(),"Entered edit mode",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Edit mode",Toast.LENGTH_SHORT).show();
+
         }
         else if(item.getItemId()==R.id.delete){
-            Toast.makeText(getApplicationContext(),"Entered delete mode",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Library deleted",Toast.LENGTH_SHORT).show();
+
+
         }else{
             return false;
         }
         return true;
+    }*/
+
+    public void openCreateLibraryActivity() {
+        Intent intent = new Intent(this, CreateLibraryActivity.class);
+        startActivity(intent);
     }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int position = info.position;
+        Library library = (Library) lv.getItemAtPosition(position);
+        libraryId = library.getId();
+
+        switch (item.getItemId()) {
+            case R.id.edit:
+                Toast.makeText(getApplicationContext(),"Edit mode",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LibraryActivity.this, EditLibraryActivity.class);
+                i.putExtra("libraryId", libraryId);
+                startActivity(i);
+                return true;
+            case R.id.delete:
+                deleteLibrary2WS(libraryId);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
 
 }
 

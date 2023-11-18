@@ -8,11 +8,11 @@ public class AuthorDTO {
     private String name;
     private String bio;
     private String birthDate;
-    private Bitmap deathDate;
+    private String deathDate;
     private String alternateNames;
 
 
-    public AuthorDTO(String id, String name, String bio, String birthDate, Bitmap deathDate, String alternateNames) {
+    public AuthorDTO(String id, String name, String bio, String birthDate, String deathDate, String alternateNames) {
         this.id = id;
         this.name = name;
         this.bio = bio;
@@ -37,9 +37,9 @@ public class AuthorDTO {
 
     public void setBirthDate(String birthDate) {this.birthDate = birthDate;}
 
-    public Bitmap getDeathDate() {return deathDate;}
+    public String getDeathDate() {return deathDate;}
 
-    public void setDeathDate(Bitmap deathDate) {this.deathDate = deathDate;}
+    public void setDeathDate(String deathDate) {this.deathDate = deathDate;}
 
     public String getAlternateNames() {return alternateNames;}
 

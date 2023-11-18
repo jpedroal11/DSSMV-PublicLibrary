@@ -16,9 +16,9 @@ public class LibraryDTO {
     private String closeTime;
 
 
-    public LibraryDTO(String address, String id, String name, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
-        this.address = address;
+    public LibraryDTO(String address, String id ,String name, Boolean open, String openDays, String openStatement, String openTime, String closeTime) {
         this.id = id;
+        this.address = address;
         this.name = name;
         this.open = open;
         this.openDays = openDays;
