@@ -2,9 +2,11 @@ package model;
 
 import android.graphics.Bitmap;
 
+import java.util.List;
+
 public class Book {
 
-    private Author authors;
+    private List<Author> authors;
     private String byStatement;
     private CoverUrls cover;
     private String description;
@@ -19,7 +21,7 @@ public class Book {
 
 
 
-    public Book(Author authors, String byStatement, CoverUrls cover, String description, String isbn, String numberOfPages, String publishDate, String title, String subjectPeople, String subjectPlaces, String subjectTimes, String subjects) {
+    public Book(List<Author> authors, String byStatement, CoverUrls cover, String description, String isbn, String numberOfPages, String publishDate, String title, String subjectPeople, String subjectPlaces, String subjectTimes, String subjects) {
         this.authors = authors;
         this.byStatement = byStatement;
         this.cover = cover;
@@ -34,11 +36,14 @@ public class Book {
         this.subjects = subjects;
     }
 
-    public Author getAuthors() {
+    public Book() {
+    }
+
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Author authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 

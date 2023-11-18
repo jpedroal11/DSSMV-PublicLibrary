@@ -6,6 +6,7 @@ import DTO.ReviewDTO;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import model.*;
 import model.CoverUrls;
 import org.json.JSONArray;
@@ -72,10 +73,17 @@ public class JsonHandler {
         for(int i = 0; i<jsonResponse.length();i++){
             JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
             int available = jsonChildNode.getInt("available");
-            Book book = (Book) jsonChildNode.get("book");
+
+            JSONObject bookJsonObject = jsonChildNode.getJSONObject("book");
+            Book book = deserializeJson2Book(bookJsonObject);
+
             int checkedOut = jsonChildNode.getInt("checkedOut");
             String isbn = jsonChildNode.optString("isbn");
-            Library library = (Library) jsonChildNode.get("library");
+            //Library library = (Library) jsonChildNode.get("library");
+            JSONObject libraryJsonObject = jsonChildNode.getJSONObject("library");
+            Library library = deserializeJson2Library(libraryJsonObject);
+
+
             int stock = jsonChildNode.getInt("stock");
 
             list.add(new LibraryBookDTO(available, book, checkedOut, isbn, library, stock));
@@ -83,15 +91,71 @@ public class JsonHandler {
         return list;
     }
 
+    private static Book deserializeJson2Book(JSONObject bookJsonObject) throws JSONException {
+        Book book = new Book();
+        book.setAuthors(deserializeJson2Author(bookJsonObject.getJSONArray("authors")));
+        book.setByStatement(bookJsonObject.optString("byStatement"));
+        book.setCover(deserializeJson2Cover(bookJsonObject.getJSONObject("cover")));
+        book.setDescription(bookJsonObject.optString("description"));
+        book.setIsbn(bookJsonObject.optString("isbn"));
+        book.setNumberOfPages(bookJsonObject.optString("numberOfPages"));
+        book.setPublishDate(bookJsonObject.optString("publishDate"));
+        book.setTitle(bookJsonObject.optString("title"));
+        book.setSubjectPeople(bookJsonObject.optString("subjectPeople"));
+        book.setSubjectPlaces(bookJsonObject.optString("subjectPlaces"));
+        book.setSubjectTimes(bookJsonObject.optString("subjectTimes"));
+        book.setSubjects(bookJsonObject.optString("subjects"));
 
-    private static List<String> getListFromJsonArray(JSONArray jsonArray) throws JSONException {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < jsonArray.length(); i++) {
-            list.add(jsonArray.getString(i));
-        }
-        return list;
+        return book;
     }
 
+    private static CoverUrls deserializeJson2Cover(JSONObject cover) {
+        CoverUrls coverUrls = new CoverUrls();
+        coverUrls.setSmallUrl(cover.optString("small"));
+        coverUrls.setMediumUrl(cover.optString("medium"));
+        coverUrls.setLargeUrl(cover.optString("large"));
+        return coverUrls;
+    }
+
+    private static List<Author> deserializeJson2Author(JSONArray jsonAuthors) throws JSONException {
+        List<Author> authors = new ArrayList<>();
+
+        for (int j = 0; j < jsonAuthors.length(); j++) {
+            JSONObject jsonAuthor = jsonAuthors.getJSONObject(j);
+            String authorName = jsonAuthor.getString("name");
+            String authorBio = jsonAuthor.optString("bio", null);
+            String authorBirthDate = jsonAuthor.optString("birthDate", null);
+            String authorDeathDate = jsonAuthor.optString("deathDate", null);
+            String authorId = jsonAuthor.optString("id", null);
+
+            JSONArray jsonAlternateNames = jsonAuthor.optJSONArray("alternateNames");
+            List<String> alternateNames = new ArrayList<>();
+            if (jsonAlternateNames != null) {
+                for (int k = 0; k < jsonAlternateNames.length(); k++) {
+                    String alternateName = jsonAlternateNames.getString(k);
+                    alternateNames.add(alternateName);
+                }
+            }
+            Author author = new Author(authorId, authorName, authorBio, authorBirthDate, authorDeathDate, alternateNames);
+            authors.add(author);
+        }
+        return authors;
+    }
+
+    private static Library deserializeJson2Library(JSONObject libraryJsonObject) throws JSONException {
+        Library library = new Library();
+        library.setId(libraryJsonObject.getString("id"));
+        library.setName(libraryJsonObject.getString("name"));
+        library.setAddress(libraryJsonObject.getString("address"));
+        library.setOpen(libraryJsonObject.getBoolean("open"));
+        library.setOpenDays(libraryJsonObject.getString("openDays"));
+        library.setOpenStatement(libraryJsonObject.getString("openStatement"));
+        library.setOpenTime(libraryJsonObject.getString("openTime"));
+        library.setCloseTime(libraryJsonObject.getString("closeTime"));
+
+
+        return library;
+    }
 
 
 }

@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Welcome to the World of Books" />
+            android:text="Public Library App" />
     <Button
             android:text="Menu"
             android:layout_width="127dp"

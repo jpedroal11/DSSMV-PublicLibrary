@@ -169,6 +169,11 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
             case R.id.delete:
                 deleteLibrary2WS(libraryId);
                 return true;
+            case R.id.show:
+                Intent intent = new Intent(LibraryActivity.this, LibraryBookActivity.class);
+                intent.putExtra("libraryId", libraryId);
+                startActivity(intent);
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

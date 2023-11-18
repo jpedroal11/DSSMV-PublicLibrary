@@ -120,7 +120,7 @@ public class RequestService {
 
     public static List<LibraryBook> getLibraryBooks(Activity c, String libraryId) {
         try{
-            String url = Utils.getWSAddress(c)+"library" + libraryId + "/books";
+            String url = Utils.getWSAddress(c)+"library/" + libraryId + "/book";
             lastUrl = url;
             String json = NetworkHandler.getDataInStringFromUrl(url);
             List<LibraryBookDTO> libraryBookDTOS = JsonHandler.deSerializeJson2ListLibraryBookDTO(json);
