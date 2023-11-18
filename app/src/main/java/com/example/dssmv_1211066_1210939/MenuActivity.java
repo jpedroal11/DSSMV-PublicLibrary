@@ -66,7 +66,7 @@ public class MenuActivity extends AppCompatActivity implements SensorEventListen
                 float z = event.values[2];
 
                 if (lastX == 0 && lastY == 0 && lastZ == 0) {
-                    // Skip the first values as they might be inaccurate
+                    // erro no inicio
                     lastX = x;
                     lastY = y;
                     lastZ = z;
