@@ -23,6 +23,13 @@ public class Mapper {
 
     }
 
+    public static CreateLibraryBookRequest createLibraryBookRequestDTO2CreateLibraryBookRequest(CreateLibraryBookRequestDTO obj) {
+
+        CreateLibraryBookRequest data = new CreateLibraryBookRequest(obj.getStock());
+        return data;
+
+    }
+
     public static List<LibraryBook> listLibraryBookDTO2listLibraryBook(List<LibraryBookDTO>  list) throws NullPointerException {
         List<LibraryBook> data = new ArrayList();
         for(LibraryBookDTO obj : list){

@@ -35,7 +35,7 @@ public class EditLibraryActivity extends AppCompatActivity {
         getLibraryFromWS(EditLibraryActivity.this, libraryId);
 
 
-        updateLibraryButton.setOnClickListener(new View.OnClickListener() { //name e address estão trocados
+        updateLibraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

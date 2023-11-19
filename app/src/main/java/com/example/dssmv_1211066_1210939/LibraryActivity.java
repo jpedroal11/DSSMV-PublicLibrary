@@ -1,12 +1,11 @@
 package com.example.dssmv_1211066_1210939;
 
 
-import DTO.LibraryDTO;
+
 import adapter.ListViewAdapterLibrary;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,13 +15,11 @@ import androidx.activity.ComponentActivity;
 import androidx.activity.result.ActivityResultLauncher;
 import android.os.Bundle;
 import helper.CustomToast;
-import helper.Utils;
 import model.Library;
 import service.RequestService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static handler.JsonHandler.serializeLibraryDTO2Json;
 
 
 public class LibraryActivity extends ComponentActivity implements AdapterView.OnItemClickListener {
@@ -31,7 +28,7 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
     private List<Library> librariesList;
     private List<Library> libraryDTOS;
     private ListViewAdapterLibrary adapter;
-    private ActivityResultLauncher<Intent> someActivityResultLauncher;
+
     private String exceptionMessage = "";
     private boolean exception = false;
     private String libraryId;
@@ -58,7 +55,7 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
             }
         });
 
-        Button refreshButton = (Button)findViewById(R.id.refreshButton); //FALTA TESTAR
+        Button refreshButton = (Button)findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +67,7 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id){ //Mostra os details de cada Library
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(libraryDTOS.get(position).getName()).append("\n");
         sb.append("Address: ").append(libraryDTOS.get(position).getAddress()).append("\n");
@@ -161,12 +158,12 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
 
         switch (item.getItemId()) {
             case R.id.edit:
-                Toast.makeText(getApplicationContext(),"Edit mode",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LibraryActivity.this, EditLibraryActivity.class);
                 i.putExtra("libraryId", libraryId);
                 startActivity(i);
                 return true;
             case R.id.delete:
+                Toast.makeText(getApplicationContext(),"Library deleted successfully",Toast.LENGTH_SHORT).show();
                 deleteLibrary2WS(libraryId);
                 return true;
             case R.id.show:

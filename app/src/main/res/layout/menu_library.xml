@@ -8,6 +8,4 @@
           android:title="Show Book(s)" />
     <item android:id="@+id/create"
           android:title="Create Book" />
-    <item android:id="@+id/update"
-          android:title="Update Book´s Stock" />
 </menu>

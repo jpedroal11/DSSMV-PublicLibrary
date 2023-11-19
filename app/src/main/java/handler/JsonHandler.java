@@ -162,5 +162,13 @@ public class JsonHandler {
         return jsonObject.toString();
     }
 
+    public static CreateLibraryBookRequestDTO deSerializeJson2CreateLibraryBookRequestDTO(String resp) throws JSONException {
+        CreateLibraryBookRequestDTO data = new CreateLibraryBookRequestDTO();
+        JSONObject mResponseObject = new JSONObject(resp);
+        data.setStock(Integer.parseInt(mResponseObject.getString("stock")));
+
+        return data;
+    }
+
 
 }

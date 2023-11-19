@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.dssmv_1211066_1210939.LibraryActivity;
 import helper.Utils;
 import model.Book;
+import model.CreateLibraryBookRequest;
 import  model.Library;
 
 import handler.JsonHandler;
@@ -151,6 +152,44 @@ public class RequestService {
                 }
             });
         }
+    }
+
+    public static void updateLibraryBookStock(String libraryId, String libraryBookId, CreateLibraryBookRequestDTO createLibraryBookRequestDTO, Activity activity) {
+        try{
+            String url = Utils.getWSAddress(activity)+"library/"+ libraryId + "/book/" + libraryBookId;
+            lastUrl = url;
+            String json = JsonHandler.serializeCreateLibraryBookRequestDTO2Json(createLibraryBookRequestDTO);
+            String result = NetworkHandler.updateDataInStringFromUrl(url, json);
+        }catch(Exception e){
+            e.printStackTrace();
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity, "updateLibraryBookStock Error"+e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    public static CreateLibraryBookRequest getLibraryBook(Activity c, String libraryId, String libraryBookIsbn) {
+        try{
+            String url = Utils.getWSAddress(c)+"library/" + libraryId + "/book/" + libraryBookIsbn;
+            lastUrl = url;
+            String json = NetworkHandler.getDataInStringFromUrl(url);
+            CreateLibraryBookRequestDTO createLibraryBookRequestDTO = JsonHandler.deSerializeJson2CreateLibraryBookRequestDTO(json);
+            CreateLibraryBookRequest createLibraryBookRequest = Mapper.createLibraryBookRequestDTO2CreateLibraryBookRequest(createLibraryBookRequestDTO);
+            return createLibraryBookRequest;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            c.runOnUiThread(new Runnable() {
+                @Override
+                public void run(){
+                    Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        return null;
     }
 }
 
