@@ -22,6 +22,8 @@ public class EditStockActivity extends AppCompatActivity {
     private String libraryId;
     private String exceptionMessage = "";
     private boolean exception = false;
+    private boolean isValid1 = true;
+    private boolean isValid2 = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +46,33 @@ public class EditStockActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText stockInsertView = findViewById(R.id.updateStockInsertViewText);
+
                 int stock = Integer.parseInt(stockInsertView.getText().toString());
+
+
+
+                stock = Integer.parseInt(stockInsertView.getText().toString());
                 if (stock < 0) {
-                    exceptionMessage = "Stock cannot be negative";
-                    exception = true;
+                    Toast.makeText(EditStockActivity.this, "Verifique que o stock não é negativo", Toast.LENGTH_SHORT).show();
+                    isValid1 = false;
+                }else {
+                    if (stock != (int) stock) {
+                        Toast.makeText(EditStockActivity.this, "Verifique que o stock é um número inteiro válido", Toast.LENGTH_SHORT).show();
+                        isValid2 = false;
+                    }else{
+                        isValid1 = true;
+                        isValid2 = true;
+                    }
                 }
 
-                CreateLibraryBookRequestDTO createLibraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
-                putLibraryBookStock2WS(libraryBookIsbn, createLibraryBookRequestDTO);
-                Toast.makeText(EditStockActivity.this, "Book´s Stock updated successfully", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(EditStockActivity.this, LibraryBookActivity.class);
-                i.putExtra("libraryId", libraryId);
-                startActivity(i);
+                if (isValid1 == true && isValid2 == true) {
+                    CreateLibraryBookRequestDTO createLibraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
+                    putLibraryBookStock2WS(libraryBookIsbn, createLibraryBookRequestDTO);
+                    Toast.makeText(EditStockActivity.this, "Book´s Stock updated successfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(EditStockActivity.this, LibraryBookActivity.class);
+                    i.putExtra("libraryId", libraryId);
+                    startActivity(i);
+                }
             }
         });
     }

@@ -18,6 +18,8 @@ public class CreateLibraryActivity extends AppCompatActivity {
     private Button addLibraryButton;
     private boolean exception = false;
     private String exceptionMessage = "";
+    private boolean isValid1 = true;
+    private boolean isValid2 = true;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -52,11 +54,29 @@ public class CreateLibraryActivity extends AppCompatActivity {
                 EditText closeTimeInsertView = findViewById(R.id.closeTimeInsertView);
                 String closeTime = closeTimeInsertView.getText().toString();
 
-                LibraryDTO libraryDTO = new LibraryDTO(name, null, address, open, openDays, openStatement,openTime, closeTime);
-                postLibrary2WS(libraryDTO);
-                Toast.makeText(CreateLibraryActivity.this, "Library added successfully", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(CreateLibraryActivity.this, LibraryActivity.class);
-                startActivity(i);
+                String openInput = openInsertView.getText().toString().toLowerCase();
+                if (!openInput.equals("true") && !openInput.equals("false")) {
+                    Toast.makeText(CreateLibraryActivity.this, "Introduza 'true' ou 'false'", Toast.LENGTH_SHORT).show();
+                    isValid1 = false;
+                } else {
+                    open = Boolean.parseBoolean(openInput);
+
+                    if (name.isEmpty() || address.isEmpty() || openDays.isEmpty() || openStatement.isEmpty() || openTime.isEmpty() || closeTime.isEmpty()) {
+                        Toast.makeText(CreateLibraryActivity.this, "Algum atributo da Biblioteca ainda está por preencher", Toast.LENGTH_SHORT).show();
+                        isValid2 = false;
+                    } else {
+                        isValid1 = true;
+                        isValid2 = true;
+                    }
+                }
+
+                if (isValid1 == true && isValid2 == true) {
+                    LibraryDTO libraryDTO = new LibraryDTO(name, null, address, open, openDays, openStatement,openTime, closeTime);
+                    postLibrary2WS(libraryDTO);
+                    Toast.makeText(CreateLibraryActivity.this, "Library added successfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(CreateLibraryActivity.this, LibraryActivity.class);
+                    startActivity(i);
+                }
             }
         });
     }
