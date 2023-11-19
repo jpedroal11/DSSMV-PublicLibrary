@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,10 @@ public class CreateLibraryBookActivity extends AppCompatActivity {
     private boolean exception = false;
     private String exceptionMessage = "";
     private String libraryId;
+    private boolean isValid1 = true;
+    private boolean isValid2 = true;
+    private boolean isValid3 = true;
+    NumberPicker stockNumberPicker;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,6 +35,11 @@ public class CreateLibraryBookActivity extends AppCompatActivity {
         Intent createIntent = getIntent();
         libraryId = createIntent.getStringExtra("libraryId");
 
+        stockNumberPicker = findViewById(R.id.stockNumberPicker);
+        stockNumberPicker.setMinValue(0);
+        stockNumberPicker.setMaxValue(100);
+        stockNumberPicker.setWrapSelectorWheel(true);
+
 
         addBookButton = (Button) findViewById(R.id.addBookButton);
         addBookButton.setOnClickListener(new View.OnClickListener() {
@@ -38,15 +48,23 @@ public class CreateLibraryBookActivity extends AppCompatActivity {
                 EditText isbnEditText = findViewById(R.id.isbnEditText);
                 String isbn = isbnEditText.getText().toString();
 
-                EditText stockEditText = findViewById(R.id.stockEditText);
-                int stock = Integer.parseInt(stockEditText.getText().toString());
+                NumberPicker stockNumberPicker = findViewById(R.id.stockNumberPicker);
+                int stock = stockNumberPicker.getValue();
 
-                CreateLibraryBookRequestDTO libraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
-                Toast.makeText(CreateLibraryBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(CreateLibraryBookActivity.this, LibraryBookActivity.class);
-                postLibraryBook2WS(libraryBookRequestDTO, libraryId, isbn);
-                i.putExtra("libraryId", libraryId);
-                startActivity(i);
+
+                if (isbn.isEmpty()) {
+                    Toast.makeText(CreateLibraryBookActivity.this, "Check if isbn was inserted", Toast.LENGTH_SHORT).show();
+                    isValid1 = false;
+                }
+
+                if (isValid1 == true){
+                    CreateLibraryBookRequestDTO libraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
+                    Toast.makeText(CreateLibraryBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(CreateLibraryBookActivity.this, LibraryBookActivity.class);
+                    postLibraryBook2WS(libraryBookRequestDTO, libraryId, isbn);
+                    i.putExtra("libraryId", libraryId);
+                    startActivity(i);
+                }
             }
         });
     }

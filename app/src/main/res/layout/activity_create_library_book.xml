@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/isbnEditText" android:layout_marginBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.049" app:layout_constraintVertical_bias="0.862"/>
+            app:layout_constraintHorizontal_bias="0.052" app:layout_constraintVertical_bias="0.961"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,24 +30,21 @@
             android:id="@+id/isbnEditText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/stockBookTextView" android:layout_marginBottom="20dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.079"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.957"/>
     <TextView
             android:text="Insert Book Stock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/stockBookTextView"
-            app:layout_constraintBottom_toTopOf="@+id/stockEditText"
-            android:layout_marginBottom="16dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.053"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text=""
-            android:ems="10"
-            android:id="@+id/stockEditText"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.079" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="456dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.036"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="184dp"/>
+    <NumberPicker android:id="@+id/stockNumberPicker"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                  android:layout_marginStart="40dp" app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintVertical_bias="0.368"/>
     <Button
             android:text="Create Book"
             android:layout_width="wrap_content"

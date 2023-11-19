@@ -4,10 +4,13 @@ import DTO.CreateLibraryBookRequestDTO;
 import DTO.LibraryDTO;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ public class EditStockActivity extends AppCompatActivity {
     private boolean exception = false;
     private boolean isValid1 = true;
     private boolean isValid2 = true;
+    private NumberPicker stockInsertView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,39 +44,24 @@ public class EditStockActivity extends AppCompatActivity {
 
         getLibraryBookFromWS(EditStockActivity.this, libraryBookIsbn);
 
+        stockInsertView = findViewById(R.id.updateStockInsertViewText);
+        stockInsertView.setMinValue(0);
+        stockInsertView.setMaxValue(100);
+        stockInsertView.setWrapSelectorWheel(true);
 
         updateStockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                EditText stockInsertView = findViewById(R.id.updateStockInsertViewText);
+                int stock = stockInsertView.getValue();
 
-                int stock = Integer.parseInt(stockInsertView.getText().toString());
+                CreateLibraryBookRequestDTO createLibraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
+                putLibraryBookStock2WS(libraryBookIsbn, createLibraryBookRequestDTO);
+                Toast.makeText(EditStockActivity.this, "Book´s Stock updated successfully", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(EditStockActivity.this, LibraryBookActivity.class);
+                i.putExtra("libraryId", libraryId);
+                startActivity(i);
 
-
-
-                stock = Integer.parseInt(stockInsertView.getText().toString());
-                if (stock < 0) {
-                    Toast.makeText(EditStockActivity.this, "Verifique que o stock não é negativo", Toast.LENGTH_SHORT).show();
-                    isValid1 = false;
-                }else {
-                    if (stock != (int) stock) {
-                        Toast.makeText(EditStockActivity.this, "Verifique que o stock é um número inteiro válido", Toast.LENGTH_SHORT).show();
-                        isValid2 = false;
-                    }else{
-                        isValid1 = true;
-                        isValid2 = true;
-                    }
-                }
-
-                if (isValid1 == true && isValid2 == true) {
-                    CreateLibraryBookRequestDTO createLibraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
-                    putLibraryBookStock2WS(libraryBookIsbn, createLibraryBookRequestDTO);
-                    Toast.makeText(EditStockActivity.this, "Book´s Stock updated successfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(EditStockActivity.this, LibraryBookActivity.class);
-                    i.putExtra("libraryId", libraryId);
-                    startActivity(i);
-                }
             }
         });
     }
@@ -88,8 +77,9 @@ public class EditStockActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        EditText updateStockInsertViewText = findViewById(R.id.updateStockInsertViewText);
-                        updateStockInsertViewText.setText(String.valueOf(createLibraryBookRequest.getStock()));
+                        NumberPicker updateStockInsertViewText = findViewById(R.id.updateStockInsertViewText);
+                        updateStockInsertViewText.setValue(createLibraryBookRequest.getStock());
+
 
                     }
                 });
@@ -124,7 +114,9 @@ public class EditStockActivity extends AppCompatActivity {
             Toast.makeText(EditStockActivity.this,exceptionMessage,Toast.LENGTH_SHORT).show();
         }
     }
-    }
+
+
+}
 
 
 
