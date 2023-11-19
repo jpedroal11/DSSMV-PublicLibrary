@@ -20,9 +20,9 @@ public class JsonHandler {
     public static LibraryDTO deSerializeJson2LibraryDTO(String resp) throws JSONException {
         LibraryDTO data = new LibraryDTO();
         JSONObject mResponseObject = new JSONObject(resp);
-        data.setAddress(mResponseObject.getString("address"));
-        data.setId(mResponseObject.getString("id"));
         data.setName(mResponseObject.getString("name"));
+        data.setId(mResponseObject.getString("id"));
+        data.setAddress(mResponseObject.getString("address"));
         data.setOpen(mResponseObject.getBoolean("open"));
         data.setOpenDays(mResponseObject.getString("openDays"));
         data.setOpenStatement(mResponseObject.getString("openStatement"));
@@ -34,9 +34,9 @@ public class JsonHandler {
 
     public static String serializeLibraryDTO2Json(LibraryDTO obj) throws JSONException {
         JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", obj.getName());
         jsonObject.put("address", obj.getAddress());
         jsonObject.put("closeTime", obj.getCloseTime());
-        jsonObject.put("name", obj.getName());
         jsonObject.put("open", obj.getOpen());
         jsonObject.put("openDays", obj.getOpenDays());
         jsonObject.put("openStatement", obj.getOpenStatement());
@@ -51,8 +51,8 @@ public class JsonHandler {
         for(int i = 0; i<jsonResponse.length();i++){
             JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
             String name = jsonChildNode.optString("name");
-            String address = jsonChildNode.optString("address");
             String id = jsonChildNode.optString("id");
+            String address = jsonChildNode.optString("address");
             boolean open = jsonChildNode.optBoolean("open");
             String openDays = jsonChildNode.optString("openDays");
             String openStatement = jsonChildNode.optString("openStatement");
@@ -142,15 +142,14 @@ public class JsonHandler {
 
     private static Library deserializeJson2Library(JSONObject libraryJsonObject) throws JSONException {
         Library library = new Library();
-        library.setId(libraryJsonObject.getString("id"));
         library.setName(libraryJsonObject.getString("name"));
+        library.setId(libraryJsonObject.getString("id"));
         library.setAddress(libraryJsonObject.getString("address"));
         library.setOpen(libraryJsonObject.getBoolean("open"));
         library.setOpenDays(libraryJsonObject.getString("openDays"));
         library.setOpenStatement(libraryJsonObject.getString("openStatement"));
         library.setOpenTime(libraryJsonObject.getString("openTime"));
         library.setCloseTime(libraryJsonObject.getString("closeTime"));
-
 
         return library;
     }

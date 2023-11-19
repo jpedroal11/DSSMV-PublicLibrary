@@ -45,7 +45,10 @@ public class EditStockActivity extends AppCompatActivity {
 
                 EditText stockInsertView = findViewById(R.id.updateStockInsertViewText);
                 int stock = Integer.parseInt(stockInsertView.getText().toString());
-
+                if (stock < 0) {
+                    exceptionMessage = "Stock cannot be negative";
+                    exception = true;
+                }
 
                 CreateLibraryBookRequestDTO createLibraryBookRequestDTO = new CreateLibraryBookRequestDTO(stock);
                 putLibraryBookStock2WS(libraryBookIsbn, createLibraryBookRequestDTO);

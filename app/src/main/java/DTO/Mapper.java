@@ -18,7 +18,7 @@ public class Mapper {
 
     public static Library libraryDTO2Library(LibraryDTO obj) {
 
-        Library data = new Library(obj.getAddress(), obj.getId(), obj.getName(), obj.getOpen(), obj.getOpenDays(), obj.getOpenStatement(), obj.getOpenTime(), obj.getCloseTime());
+        Library data = new Library(obj.getName(), obj.getId(), obj.getAddress() , obj.getOpen(), obj.getOpenDays(), obj.getOpenStatement(), obj.getOpenTime(), obj.getCloseTime());
         return data;
 
     }

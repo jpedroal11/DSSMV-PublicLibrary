@@ -85,7 +85,7 @@ public class RequestService {
 
     public static void deleteLibrary(String id, Activity activity) {
         try{
-            String url = Utils.getWSAddress(activity)+"library/"+id;
+            String url = Utils.getWSAddress(activity) + "library/" + id;
             lastUrl = url;
             NetworkHandler.deleteDataInStringFromUrl(url);
         }catch(Exception e){
@@ -101,7 +101,7 @@ public class RequestService {
 
     public static void updateLibrary(String id, LibraryDTO libraryDTO, Activity activity) {
         try{
-            String url = Utils.getWSAddress(activity)+"library/"+id;
+            String url = Utils.getWSAddress(activity) + "library/" + id;
             lastUrl = url;
             String json = JsonHandler.serializeLibraryDTO2Json(libraryDTO);
             String result = NetworkHandler.updateDataInStringFromUrl(url, json);
@@ -118,7 +118,7 @@ public class RequestService {
 
     public static List<LibraryBook> getLibraryBooks(Activity c, String libraryId) {
         try{
-            String url = Utils.getWSAddress(c)+"library/" + libraryId + "/book";
+            String url = Utils.getWSAddress(c) + "library/" + libraryId + "/book";
             lastUrl = url;
             String json = NetworkHandler.getDataInStringFromUrl(url);
             List<LibraryBookDTO> libraryBookDTOS = JsonHandler.deSerializeJson2ListLibraryBookDTO(json);

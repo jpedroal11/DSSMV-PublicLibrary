@@ -63,7 +63,7 @@ public class EditLibraryActivity extends AppCompatActivity {
                 String closeTime = closeTimeInsertView.getText().toString();
 
 
-                LibraryDTO libraryDTO = new LibraryDTO(address, id, name, open, openDays, openStatement,openTime, closeTime);
+                LibraryDTO libraryDTO = new LibraryDTO(name, id, address, open, openDays, openStatement,openTime, closeTime);
                 putLibrary2WS(libraryDTO.getId(), libraryDTO);
                 Toast.makeText(EditLibraryActivity.this, "Library updated successfully", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(EditLibraryActivity.this, LibraryActivity.class);

@@ -1,7 +1,5 @@
 package com.example.dssmv_1211066_1210939;
 
-
-
 import adapter.ListViewAdapterLibrary;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.activity.ComponentActivity;
-import androidx.activity.result.ActivityResultLauncher;
 import android.os.Bundle;
 import helper.CustomToast;
 import model.Library;
@@ -164,7 +161,9 @@ public class LibraryActivity extends ComponentActivity implements AdapterView.On
                 return true;
             case R.id.delete:
                 Toast.makeText(getApplicationContext(),"Library deleted successfully",Toast.LENGTH_SHORT).show();
+                Intent deleteIntent = new Intent(LibraryActivity.this, LibraryActivity.class);
                 deleteLibrary2WS(libraryId);
+                startActivity(deleteIntent);
                 return true;
             case R.id.show:
                 Intent intent = new Intent(LibraryActivity.this, LibraryBookActivity.class);
