@@ -9,9 +9,9 @@
         tools:context=".LibraryBookActivity">
     <ListView
             android:id="@+id/libraryBooksListView"
-            android:layout_width="409dp"
-            android:layout_height="607dp"
-            tools:layout_editor_absoluteY="81dp"
-            tools:layout_editor_absoluteX="1dp"/>
+            android:layout_width="403dp"
+            android:layout_height="665dp"
+            tools:layout_editor_absoluteY="63dp"
+            tools:layout_editor_absoluteX="2dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
