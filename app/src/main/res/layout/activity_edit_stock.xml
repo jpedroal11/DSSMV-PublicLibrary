@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#6E260E"
         tools:context=".EditStockActivity">
 
     <NumberPicker android:id="@+id/updateStockInsertViewText"
@@ -33,5 +34,7 @@
             android:layout_height="wrap_content" android:id="@+id/updateStockButton"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            android:layout_marginBottom="380dp"/>
+            android:layout_marginBottom="380dp"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

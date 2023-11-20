@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
+        android:background="#6E260E"
         android:layout_height="match_parent"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -58,6 +59,8 @@
     <Button
             android:text="Set"
             android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_height="wrap_content"
             android:id="@+id/settingsButton"/>
 
